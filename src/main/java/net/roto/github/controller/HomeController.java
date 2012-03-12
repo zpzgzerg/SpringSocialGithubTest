@@ -5,10 +5,7 @@ import java.util.Locale;
 import javax.inject.Inject;
 
 import net.roto.github.service.GitHubService;
-import net.roto.github.service.SocialService;
 
-import org.springframework.social.github.api.GitHub;
-import org.springframework.social.github.api.UserOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
