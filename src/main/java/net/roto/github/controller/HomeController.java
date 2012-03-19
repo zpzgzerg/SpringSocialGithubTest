@@ -3,6 +3,7 @@ package net.roto.github.controller;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import net.roto.github.model.User;
 import net.roto.github.service.SocialService;
@@ -28,11 +29,12 @@ public class HomeController {
 		return "main";
 	}
 	@RequestMapping(value = "/{socialType}", method = RequestMethod.GET)
-	public String socialInfo(@PathVariable String socialType, Model model){
+	public String socialInfo(@PathVariable String socialType, HttpServletRequest request, Model model){
 		SocialService<ApiBinding> socialService = socialServiceMap.get(socialType + "Service");	
 		if( socialService.getAPI().isAuthorized() ){
 			User user = socialService.getUserProfile();
-			model.addAttribute("user", user);		
+			model.addAttribute("user", user);	
+			model.addAttribute("connectURL", request.getSession().getServletContext().getContextPath() + "/connect/" + socialType);
 		}
 		
 		return "socialInfo";

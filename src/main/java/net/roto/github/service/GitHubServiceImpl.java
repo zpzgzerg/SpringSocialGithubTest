@@ -39,6 +39,7 @@ public class GitHubServiceImpl implements GitHubService{
 			user.setId( Long.toString( gitHubUserProfile.getId() ) );
 			user.setName( gitHubUserProfile.getName() );
 			user.setEmail( gitHubUserProfile.getEmail() );
+			user.setFollowerList( getFollowerList( gitHubUserProfile.getUsername() ));
 			return user;
 		}else{
 			throw new NullPointerException("GitHub 사용자 프로필이 존재하지 않습니다.");

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+Facebok에 연결되었습니다.<br>
+<a href="../">메인으로 가기</a>
 </body>
 </html>

@@ -14,11 +14,17 @@
 		    <h2>${socialType}</h2>
 		    <social:connected provider="${socialType}">
 		        <p>${socialType}에 연결되었습니다.</p>
-		        <div class="profilePhoto">
-		        	<img src="${user.profileImageUrl}">
-		        </div>
-		        <div class="well">
-		            <table class="grid">
+		        <c:if test="${user.profileImageUrl != null}">
+			        <div class="profilePhoto">
+			        	<img src="${user.profileImageUrl}">
+			        </div>
+		        </c:if>
+		        <div style="boder:1px solid black">
+		            <table>
+		            	<tr>
+		            		<td>ID</td>
+		            		<td>${user.id}</td>
+		            	</tr>
 		            	<tr>
 		            		<td>E-Mail</td>
 		            		<td>${user.email}</td>
@@ -28,18 +34,21 @@
 		            		<td>${user.name}</td>
 		            	</tr>
 		               <tr>
-		               	<td>Follower</td>
+		               	<td valign="top">Follower</td>
 						<td>
 							<c:forEach items="${user.followerList}" var="follower"> 
-								<div>
-									<img src="${follower.profileImageUrl}" width="30px" height="30px"> ${follower.name} ${follower.email} 
+								<div style="boder:1px solid black">
+									<c:if test="${follower.profileImageUrl != null}">
+										<img src="${follower.profileImageUrl}" width="30px" height="30px">
+									</c:if>									
+									${follower.name} ${follower.email} 
 								</div>
 							</c:forEach>
 						</td>
 		               </tr>
 		            </table>
 		        </div>
-		        <form method="post" action="/SpringSocialTest/connect/${socialType}">
+		        <form method="post" action="${connectURL}">
 		            <input type="hidden" name="_method" value="delete" />
 		            <input class="btn btn-danger" type="submit" value="Disconnect from ${socialType}" />
 		        </form>
@@ -47,7 +56,7 @@
 		
 		    <social:notConnected provider="${socialType}">
 		        <p>${socialType}에 연결되지 않았습니다.</p>
-		        <form method="post" action="/SpringSocialTest/connect/${socialType}">
+		        <form method="post" action="${connectURL}">
 		        	<c:choose>
 		        		<c:when test="${socialType == 'github'}">
 		        			 <input type="hidden" name="scope" value="user, repo, gist" />
