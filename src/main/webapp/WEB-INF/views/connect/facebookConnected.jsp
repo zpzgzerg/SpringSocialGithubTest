@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>GitHub Connect</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<p>GitHub에 연결되지 않았습니다.</p>
-	<form method="post" action="/connect/github">
-	    <input type="hidden" name="scope" value="user, repo, gist" />
-	    <input class="btn btn-primary" type="submit" value="Connect to GitHub" />
-	</form>
+
 </body>
 </html>

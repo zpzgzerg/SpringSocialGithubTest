@@ -25,11 +25,14 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
 	    <property name="connectionFactories">
-	        <list>
-	        
+	        <list>	        
 	            <bean class="org.springframework.social.github.connect.GitHubConnectionFactory">
-	                <constructor-arg value="b3be02c863cabf03a534" />
-	                <constructor-arg value="123dee632bec87b852e193f96280e68cdd771aed" />
+	                <constructor-arg value="d45121776a7b5ba6c7a6" />
+	                <constructor-arg value="697733a5a322b41799fa0e323cadafc39198a697" />
+	            </bean>
+	            <bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">
+	            	<constructor-arg value="263145790433697" />
+	            	<constructor-arg value="173a91cab3b14b8b3c98179ad9ea9ad3" />
 	            </bean>
 	        </list>
 	    </property>
@@ -48,7 +51,7 @@
 	    factory-method="createConnectionRepository"
 	    scope="request">
 	
-	    <constructor-arg value=""/>
+	    <constructor-arg value="rotoshine"/>
 	    <aop:scoped-proxy proxy-target-class="false"/>
 	</bean>
 	

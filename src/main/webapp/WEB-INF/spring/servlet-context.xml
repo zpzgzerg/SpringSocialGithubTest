@@ -35,12 +35,6 @@
 		<beans:property name="order" value="2" />
 	</beans:bean> 
 	<context:component-scan base-package="net.roto.github" />
-<!-- 	<beans:bean id="simpleSignInAdapter" class="net.roto.github.service.SimpleSignInAdapter" />
-	
-	<beans:bean id="providerSignInController" class="org.springframework.social.connect.web.ProviderSignInController" >
-		<beans:constructor-arg ref="connectionFactoryLocator" />
-		<beans:constructor-arg ref="usersConnectionRepository" />
-		<beans:constructor-arg ref="simpleSignInAdapter" />
-	</beans:bean>   -->
+
 	<beans:bean class="org.springframework.social.connect.web.ConnectController" />
 </beans:beans>

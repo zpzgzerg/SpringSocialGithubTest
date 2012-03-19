@@ -1,5 +1,13 @@
 package net.roto.github.service;
 
-public interface SocialService<T> {
-	public T getAPI();
+import java.util.List;
+
+import net.roto.github.model.User;
+
+public interface SocialService<SocialType> {
+	public SocialType getAPI();
+	public User getUserProfile();
+	public List<User> getFollowerList(String user);
+	public List<User> getFollowingList(String user);
+	
 }
