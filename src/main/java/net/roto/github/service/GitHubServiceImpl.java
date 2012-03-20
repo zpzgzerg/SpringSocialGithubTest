@@ -30,7 +30,7 @@ public class GitHubServiceImpl implements GitHubService{
 			return new GitHubTemplate();
 		}
 	}
-	
+	@Override
 	public User getUserProfile() {
 		GitHubUserProfile gitHubUserProfile = getAPI().userOperations().getUserProfile();
 		if( gitHubUserProfile != null ){
@@ -39,21 +39,24 @@ public class GitHubServiceImpl implements GitHubService{
 			user.setId( Long.toString( gitHubUserProfile.getId() ) );
 			user.setName( gitHubUserProfile.getName() );
 			user.setEmail( gitHubUserProfile.getEmail() );
-			user.setFollowerList( getFollowerList( gitHubUserProfile.getUsername() ));
+			user.setFollowerList( getFollowerList());
 			return user;
 		}else{
 			throw new NullPointerException("GitHub 사용자 프로필이 존재하지 않습니다.");
 		}
 	}
 
-	public List<User> getFollowerList(String user) {
-		List<GitHubUser> gitHubUserList = getAPI().userOperations().getFollowers(user);
+	@Override
+	public List<User> getFollowerList() {
+		String username = getAPI().userOperations().getUserProfile().getUsername();
+		List<GitHubUser> gitHubUserList = getAPI().userOperations().getFollowers(username);
 		return convertToUserFromGitHubUser (gitHubUserList);
 	}
-
-
-	public List<User> getFollowingList(String user) {
-		List<GitHubUser> gitHubUserList = getAPI().userOperations().getFollowing(user);
+	
+	@Override
+	public List<User> getFollowingList() {
+		String username = getAPI().userOperations().getUserProfile().getUsername();
+		List<GitHubUser> gitHubUserList = getAPI().userOperations().getFollowing(username);
 		return convertToUserFromGitHubUser (gitHubUserList);
 	}
 

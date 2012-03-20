@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Service Provider Select</title>
+<title>인증완료</title>
 </head>
 <body>
-<a href="github">github</a> <br>
-<a href="facebook">facebook</a><br>
-<a href="twitter">twitter</a><br>
+twitter에 연결되었습니다.<br>
+<a href="../">메인으로 가기</a>
 </body>
 </html>

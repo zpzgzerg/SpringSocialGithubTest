@@ -93,7 +93,13 @@
 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-facebook</artifactId>
-			<version>1.0.0.BUILD-SNAPSHOT</version>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-twitter</artifactId>
+			<version>1.1.0.BUILD-SNAPSHOT</version>
 		</dependency>
 		
 		<!-- AspectJ -->

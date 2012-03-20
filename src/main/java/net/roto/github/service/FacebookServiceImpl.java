@@ -30,37 +30,47 @@ public class FacebookServiceImpl implements FacebookService{
 		}
 	}
 
-	public List<User> getFollowerList(String user) {
+	@Override
+	public List<User> getFollowerList() {
 		long startTime = new Date().getTime();		
 		List<FacebookProfile> facebookFriendList = getAPI().friendOperations().getFriendProfiles();
 		System.out.println( "친구목록 수신에 걸린 : " + (new Date().getTime() - startTime) + "ms");
 		List<User> convertedFriendList = new ArrayList<User>();
 		for(FacebookProfile facebookProfile : facebookFriendList){
-			User facebookFriend = new User();
-			facebookFriend.setName( facebookProfile.getName() );
-			facebookFriend.setProfileImageUrl(  "https://graph.facebook.com/" + facebookProfile.getId() + "/picture" );
+			User facebookFriend = convertFacebookProfileToUser(facebookProfile);
 			convertedFriendList.add( facebookFriend );
 		}
 		
 		return convertedFriendList;
 	}
 
-	public List<User> getFollowingList(String user) {
-		return getFollowerList(user);
+	@Override
+	public List<User> getFollowingList() {
+		return getFollowerList();
 	}
-
+	
+	@Override
 	public User getUserProfile() {
 		FacebookProfile facebookProfile = getAPI().userOperations().getUserProfile();
 		if( facebookProfile != null ){
-			User user = new User();		
-			user.setProfileImageUrl( "https://graph.facebook.com/" + facebookProfile.getId() + "/picture" );
-			user.setName( facebookProfile.getName() );
-			user.setEmail( facebookProfile.getEmail() );
-			user.setId( facebookProfile.getId() );
-			user.setFollowerList( getFollowerList(""));
+			User user = convertFacebookProfileToUser(facebookProfile);
+			user.setFollowerList( getFollowerList());
 			return user;
 		}else{
 			throw new NullPointerException("Facebook 프로필 정보가 올바르지 않습니다.");
 		}
 	}		
+	
+	private User convertFacebookProfileToUser(FacebookProfile facebookProfile){
+		User user = new User();		
+		user.setProfileImageUrl( createProfileUmageUrl(facebookProfile.getId()) );
+		user.setName( facebookProfile.getName() );
+		user.setEmail( facebookProfile.getEmail() );
+		user.setId( facebookProfile.getId() );
+		return user;
+	}
+	
+	private String createProfileUmageUrl(String facebookId){
+		return String.format("https://graph.facebook.com/%s/picture", facebookId);
+	}
 }

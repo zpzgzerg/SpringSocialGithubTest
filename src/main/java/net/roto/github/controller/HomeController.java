@@ -34,9 +34,10 @@ public class HomeController {
 		if( socialService.getAPI().isAuthorized() ){
 			User user = socialService.getUserProfile();
 			model.addAttribute("user", user);	
-			model.addAttribute("connectURL", request.getSession().getServletContext().getContextPath() + "/connect/" + socialType);
+			
 		}
-		
+		System.out.println( request.getSession().getServletContext().getContextPath() + "/connect/" + socialType );
+		model.addAttribute("connectURL", request.getSession().getServletContext().getContextPath() + "/connect/" + socialType);
 		return "socialInfo";
 	}
 	

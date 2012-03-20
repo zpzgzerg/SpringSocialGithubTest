@@ -34,6 +34,11 @@
 	            	<constructor-arg value="263145790433697" />
 	            	<constructor-arg value="173a91cab3b14b8b3c98179ad9ea9ad3" />
 	            </bean>
+	            
+	            <bean class="org.springframework.social.twitter.connect.TwitterConnectionFactory">
+	            	<constructor-arg value="h4e0wCKt4dLrn3bs99QLlA" />
+	            	<constructor-arg value="foqSldcbDsrJz3eHEh2Pl199W9CVbLrIOXRcLuBP5s" />
+	            </bean>
 	        </list>
 	    </property>
 	</bean>

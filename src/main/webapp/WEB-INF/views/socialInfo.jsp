@@ -64,6 +64,9 @@
 		        		<c:when test="${socialType == 'facebook'}">
 		        			 <input type="hidden" name="scope" value="user_about_me, friends_about_me" />
 		        		</c:when>
+		        		<c:when test="${socialType == 'twitter'}">
+		        			<input type="hidden" name="oauth_callback" value="localhost:8080/SpringSocialTest/twitter" />
+		        		</c:when>
 		        		
 		        	</c:choose>
 		           

@@ -7,7 +7,7 @@ import net.roto.github.model.User;
 public interface SocialService<SocialType> {
 	public SocialType getAPI();
 	public User getUserProfile();
-	public List<User> getFollowerList(String user);
-	public List<User> getFollowingList(String user);
+	public List<User> getFollowerList();
+	public List<User> getFollowingList();
 	
 }
